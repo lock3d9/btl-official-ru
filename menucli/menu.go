@@ -161,7 +161,6 @@ func ConfirmAction(item MenuItem) bool {
 
 	for {
 		clearScreen()
-		// ИСПРАВЛЕНО: Заменено fmt.Sprintf на fmt.Printf
 		fmt.Printf("\033[36m=== %s ===\033[0m\n\n", item.Title)
 		fmt.Printf("Описание:\n%s\n\n", item.Description)
 		if item.Warning != "" {
@@ -192,14 +191,12 @@ func showSubMenu(cat Category) (string, bool) {
 	cursor := 0
 	for {
 		clearScreen()
-		// ИСПРАВЛЕНО: Заменено fmt.Sprintf на fmt.Printf
 		fmt.Printf("\033[36m=== РАЗДЕЛ: %s ===\033[0m\n", cat.Title)
 		fmt.Println("Выберите опцию (W/S — навигация, Enter — выбор, Esc — назад):\n")
 		printOptions(opts, cursor)
 
 		if cursor < len(cat.Items) {
 			fmt.Println("\n\033[90m----------------------------------------\033[0m")
-			// ИСПРАВЛЕНО: Заменено fmt.Sprintf на fmt.Printf + добавлены переносы строк '\n'
 			fmt.Printf("\033[33mОписание:\033[0m %s\n", cat.Items[cursor].Description)
 			if w := cat.Items[cursor].Warning; w != "" {
 				fmt.Printf("\033[31m[ПРЕДУПРЕЖДЕНИЕ]: %s\033[0m\n", w)
